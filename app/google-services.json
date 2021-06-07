@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "51666552479",
+    "project_id": "debtsandloans-22a4d",
+    "storage_bucket": "debtsandloans-22a4d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51666552479:android:bfd86c510de7b28ee4c4aa",
+        "android_client_info": {
+          "package_name": "uz.texnopos.debtsandloans"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51666552479-7mqp6dn9qh9gn5977mj8j6ci8ff5m48n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uz.texnopos.debtsandloans",
+            "certificate_hash": "ee24e2acf557835f98c3810a37d4853a21be9a03"
+          }
+        },
+        {
+          "client_id": "51666552479-tneme67vqen1k4erqf7ns6qcsnrbcs0g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiqL0-4VMUYnVUIpItI20MNsYDxzYCRSQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51666552479-tneme67vqen1k4erqf7ns6qcsnrbcs0g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="24dp"
+    android:minWidth="280dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:gravity="bottom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:textSize="20sp"
+        android:text="Contact List"
+        android:textStyle="bold"
+        android:textColor="#DE000000"
+        />
+
+    <LinearLayout
+        android:id="@+id/sortCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        >
+
+        <CheckBox
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:minWidth="?attr/minTouchTargetSize"
+            android:minHeight="?attr/minTouchTargetSize"
+            app:useMaterialThemeColors = "true"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show zero balance"
+            android:textSize="16sp"
+            android:gravity="start"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#A3000000"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/sortCheck"
+        />
+
+    <LinearLayout
+        android:id="@+id/sortItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/sortCheck"
+        android:orientation="vertical"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="24dp"
+        >
+
+        <TextView
+            android:id="@+id/ascending_by_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ascending by Name"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@id/sortCheck"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/increase_in_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ascending by Sum"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@id/ascending_by_name"
+            android:textSize="16sp"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_marginEnd="@dimen/margin_standard"
+            />
+
+        <TextView
+            android:id="@+id/ascending_by_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ascending by Date"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@id/increase_in_amount"
+            android:textSize="16sp"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_marginEnd="@dimen/margin_standard"
+            />
+
+        <TextView
+            android:id="@+id/descending_by_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descending by Name"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@id/ascending_by_date"
+            android:textSize="16sp"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_marginEnd="@dimen/margin_standard"
+            />
+
+        <TextView
+            android:id="@+id/decrease_in_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descending by Sum"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@id/descending_by_name"
+            android:textSize="16sp"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_marginEnd="@dimen/margin_standard"
+            />
+
+        <TextView
+            android:id="@+id/descending_by_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descending by Date"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@id/decrease_in_amount"
+            android:textSize="16sp"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_marginBottom="@dimen/margin_standard"
+            />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

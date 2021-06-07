@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="uz.texnopos.debtsandloans.fragments.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+
+        <action
+            android:id="@+id/action_mainFragment_to_operationsHistory"
+            app:destination="@id/operationsHistory"
+            />
+
+        <action
+            android:id="@+id/action_mainFragment_to_backupsFragment"
+            app:destination="@id/backupsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/operationsHistory"
+        android:name="uz.texnopos.debtsandloans.fragments.OperationsHistoryFragment"
+        android:label="fragment_operations_history"
+        tools:layout="@layout/fragment_operations_history" />
+
+    <fragment
+        android:id="@+id/backupsFragment"
+        android:name="uz.texnopos.debtsandloans.fragments.BackupsFragment"
+        android:label="fragment_backups"
+        tools:layout="@layout/fragment_backups" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="uz.texnopos.debtsandloans.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+
+</navigation>

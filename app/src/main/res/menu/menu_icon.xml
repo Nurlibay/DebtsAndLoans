@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/add_contact"
+        android:title="Add Contact"
+        />
+
+    <item android:id="@+id/operation_history"
+        android:title="Operation History"
+        />
+
+    <item android:id="@+id/backups"
+        android:title="Backups"
+        />
+
+    <item android:id="@+id/settings"
+        android:title="Settings"
+        />
+
+    <item android:id="@+id/search"
+        android:title="Search...."
+        />
+
+    <item android:id="@+id/about"
+        android:title="About"
+        />
+
+</menu>
