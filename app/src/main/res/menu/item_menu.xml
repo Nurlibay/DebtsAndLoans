@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/pay_full_amount"
+        android:title="Pay Off Current Sum"
+        />
+
+    <item android:id="@+id/change_balance"
+        android:title="Change Balance"
+        />
+
+    <item android:id="@+id/history_operations"
+        android:title="Operations History"
+        />
+
+    <item android:id="@+id/сlear_history"
+        android:title="Clear History"
+        />
+
+    <item android:id="@+id/rename"
+        android:title="Rename"
+        />
+
+    <item android:id="@+id/delete_contact"
+        android:title="Remove Contact"
+        />
+
+</menu>

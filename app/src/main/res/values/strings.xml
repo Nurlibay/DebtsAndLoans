@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Долги и Займи</string>
+    <string name="app_about">Your assistant in the management of loans and debts.</string>
+    <string name="have_question">Have a question or proposal? Write us via email:</string>
+    <string name="rate_app">Rate us in Play Market! (tap on stars)</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="image">image</string>
+    <string name="adding">Adding</string>
 </resources>
