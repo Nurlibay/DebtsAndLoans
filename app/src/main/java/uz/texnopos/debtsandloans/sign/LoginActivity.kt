@@ -1,4 +1,4 @@
-package uz.texnopos.debtsandloans.authentication
+package uz.texnopos.debtsandloans.sign
 
 import android.content.Intent
 import android.os.Bundle

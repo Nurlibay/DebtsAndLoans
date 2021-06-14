@@ -14,8 +14,8 @@ class MyListAdapter: RecyclerView.Adapter<ListViewHolder>() {
             notifyDataSetChanged()
         }
 
-    fun addUser(position: Int, personName: String, summa: Int){
-        models.add(position, Model(personName, summa))
+    fun addUser(position: Int, contactName: String, amount: Int, comment: String, data: String){
+        models.add(position, Model(contactName, amount, comment, data))
         notifyItemInserted(position)
         notifyItemRangeChanged(position, models.size)
     }
@@ -35,4 +35,16 @@ class MyListAdapter: RecyclerView.Adapter<ListViewHolder>() {
     }
 
     override fun getItemCount(): Int = models.size
+
+    fun add(it: Model) {
+        models.add(it)
+        notifyItemInserted(models.lastIndex)
+    }
+
+    fun remove(it: Model) {
+        val index = models.indexOf(it)
+        models.remove(it)
+        notifyItemRemoved(index)
+    }
+
 }
