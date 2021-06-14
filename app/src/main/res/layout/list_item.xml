@@ -8,13 +8,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/personName"
+        android:id="@+id/contactName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="Person Name"
+        android:text="Contact Name"
         android:textColor="@color/black"
         android:layout_marginStart="16dp"
         android:textSize="18sp"
