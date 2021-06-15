@@ -20,6 +20,7 @@ import uz.texnopos.debtsandloans.R
 import uz.texnopos.debtsandloans.databinding.DialogAddTransactionBinding
 import uz.texnopos.debtsandloans.databinding.FragmentMainBinding
 import uz.texnopos.debtsandloans.item_space.MarginItemDecoration
+import uz.texnopos.debtsandloans.list.Model
 import uz.texnopos.debtsandloans.list.MyListAdapter
 import java.util.*
 
@@ -28,6 +29,7 @@ class MainFragment : Fragment(R.layout.fragment_main), DatePickerDialog.OnDateSe
     private val mAuth = FirebaseAuth.getInstance()
     private val db = FirebaseFirestore.getInstance()
     private val dbHelper = FirebaseHelper()
+    private val model = Model()
 
     private lateinit var viewBinding: FragmentMainBinding
     private lateinit var transactionBinding: DialogAddTransactionBinding
@@ -135,6 +137,8 @@ class MainFragment : Fragment(R.layout.fragment_main), DatePickerDialog.OnDateSe
             val addDialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_add_transaction, null)
             val dialog = AlertDialog.Builder(requireContext()).setView(addDialogView).show()
             transactionBinding = DialogAddTransactionBinding.bind(addDialogView)
+
+            // ADD button clicked event here ...
             transactionBinding.tvAdd.setOnClickListener {
                 dbHelper.eventChangeListener(
                     {
@@ -151,34 +155,26 @@ class MainFragment : Fragment(R.layout.fragment_main), DatePickerDialog.OnDateSe
                     }
                 )
 
-                val map : MutableMap<String, Any?> = mutableMapOf()
-                map["id"] = UUID.randomUUID().toString()
-                map["amount"] = transactionBinding.etValue.text.toString().toDouble()
-                map["comment"] = transactionBinding.etComment.text.toString()
-                var contactAmount = 0.0
-                db.collection("users").document(mAuth.currentUser?.uid!!)
-                    .collection("contacts").document(transactionBinding.etContact.text.toString())
-                    .collection("transactions")
-                    .document(map.getValue("id").toString()).set(map)
+                db.collection("users/${mAuth.currentUser?.uid!!}/contacts").whereEqualTo("contactName", transactionBinding.etContact.text.toString())
+                    .get()
                     .addOnSuccessListener {
-                        db.collection("users").document(mAuth.currentUser?.uid!!)
-                            .collection("contacts").document(transactionBinding.etContact.text.toString())
-                            .collection("transactions").get()
-                            .addOnSuccessListener {
-                                it.documents.forEach { doc ->
-                                    contactAmount += doc["amount"].toString().toDouble()
+                        if (it.isEmpty) {
+                            val map: MutableMap<String, Any?> = mutableMapOf()
+                            map["contactName"] = transactionBinding.etContact.text.toString()
+                            db.collection("users").document(mAuth.currentUser?.uid!!)
+                                .collection("contacts").document(transactionBinding.etContact.text.toString()).set(map)
+
+                        } else {
+                            dbHelper.addTransaction(model,
+                                {
+                                    Toast.makeText(requireContext(), "updated", Toast.LENGTH_SHORT).show()
+                                },{
+                                    Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
                                 }
-                                db.collection("users").document(mAuth.currentUser?.uid!!)
-                                    .collection("contacts").document(transactionBinding.etContact.text.toString())
-                                    .update("amount", contactAmount)
-                                    .addOnSuccessListener {
-                                        Toast.makeText(requireContext(), "updated", Toast.LENGTH_SHORT).show()
-                                    }
-                            }
+                            )
+                        }
                     }
-                    .addOnFailureListener { e ->
-                        Toast.makeText(requireContext(), e.localizedMessage, Toast.LENGTH_SHORT).show()
-                    }
+
                     
                 if (transactionBinding.etContact.text.toString() != "" && transactionBinding.etValue.text.toString() != "") {
 
@@ -192,24 +188,25 @@ class MainFragment : Fragment(R.layout.fragment_main), DatePickerDialog.OnDateSe
             transactionBinding.tvSub.setOnClickListener {
                 if (transactionBinding.etContact.text.toString() != "" && transactionBinding.etValue.text.toString() != "") {
                     myAdapter.addUser(0, transactionBinding.etContact.text.toString(), "-${transactionBinding.etValue.text.toString()}".toInt(),
-                        transactionBinding.etComment.text.toString(), "")
+                        transactionBinding.etComment.text.toString(), transactionBinding.tvCalendar.text.toString())
                 } else {
                     Toast.makeText(requireContext(), "Title or/and Description Empty !", Toast.LENGTH_LONG).show()
                 }
                 dialog.dismiss()
             }
 
+            //CANCEL button clicked event here ...
             transactionBinding.tvCancel.setOnClickListener {
                 Toast.makeText(requireContext(), "Cancel button clicked !", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
             }
 
+            // CALENDAR text view clicked event here ...
             transactionBinding.tvCalendar.setOnClickListener {
                 pickDate()
             }
         }
     }
-
 
     // Calendar view created functions here ...
     private fun getDateTimeCalendar() {
